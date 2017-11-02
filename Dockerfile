@@ -28,3 +28,4 @@ RUN ensembl-webcode/ctrl_scripts/init
 # go for it...
 RUN ensembl-webcode/ctrl_scripts/start
 
+EXPOSE 8080
