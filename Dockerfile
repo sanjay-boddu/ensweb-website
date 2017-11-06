@@ -8,7 +8,7 @@ FROM andrewyatz/webdocker-perllibs
 ARG ENSEMBL_SERVERNAME=www.ensembl.org
 ENV ENSEMBL_SERVERNAME=$ENSEMBL_SERVERNAME
 
-# session db args 
+# session db args
 ARG SESSION_HOST=your.session.db.host
 ARG SESSION_PORT=3306
 ARG SESSION_USER=ensrw
@@ -35,6 +35,7 @@ RUN git-ensembl --checkout --branch experimental/docker public-plugins
 
 # copy the Plugins config
 RUN cp public-plugins/docker-demo/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
+RUN cp public-plugins/docker-demo/conf/httpd.conf ensembl-webcode/conf/
 
 # build C deps
 #RUN ensembl-webcode/ctrl_scripts/build_api_c     ## not working - probably not required
@@ -45,4 +46,5 @@ RUN mkdir tmp
 RUN ./ensembl-webcode/ctrl_scripts/init
 RUN ./ensembl-webcode/ctrl_scripts/start_server
 
+ENTRYPOINT ./ensembl-webcode/ctrl_scripts/start_server
 EXPOSE 8080
