@@ -40,7 +40,7 @@ Some arguments must be specified at build time:
 
 #### Run a container
 
-Runs a container in daemon mode
+Run a container in daemon mode
 
 ```
 docker run -p 80:8080 -dt webdocker-website:latest
