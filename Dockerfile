@@ -46,5 +46,6 @@ RUN mkdir tmp
 RUN ./ensembl-webcode/ctrl_scripts/init
 RUN ./ensembl-webcode/ctrl_scripts/start_server
 
-ENTRYPOINT ./ensembl-webcode/ctrl_scripts/start_server
+CMD ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND
+
 EXPOSE 8080
