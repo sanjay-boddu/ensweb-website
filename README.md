@@ -40,14 +40,16 @@ Some arguments must be specified at build time:
 
 #### Run a container
 
+Runs a container in daemon mode
+
 ```
 docker run -p 80:8080 -dt webdocker-website:latest
 ```
 
-This runs the container in daemon mode. The website should now be available on `port 80`.
+The website should now be available on `port 80`.
 
 
-For debugging you may want to run a container in interactive mode using
+For debugging you may want to run a container in interactive mode
 
 ```
 docker run -p 80:8080 -t webdocker-website:latest bash
