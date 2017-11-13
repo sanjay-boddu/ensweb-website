@@ -6,4 +6,4 @@ The plugin adds species _Anopheles gambaie_ to the site
 
 Build and run as per the main demo.
 
-Once the image is running, _Anopheles gambaie_ will be available available at http://your-server/Anopheles_gambiae
+Once the image is running, _Anopheles gambaie_ should appear on the homepage and be available at http://your-server/Anopheles_gambiae
