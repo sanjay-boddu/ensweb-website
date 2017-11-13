@@ -34,7 +34,7 @@ RUN git-ensembl --clone ensembl ensembl-compara ensembl-funcgen ensembl-io ensem
 RUN git-ensembl --checkout --branch experimental/docker public-plugins
 
 # copy the Plugins config
-RUN cp public-plugins/docker-demo/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
+RUN cp public-plugins/docker-demo-add-species/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 RUN cp public-plugins/docker-demo/conf/httpd.conf ensembl-webcode/conf/
 
 # build C deps
