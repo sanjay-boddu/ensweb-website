@@ -2,6 +2,8 @@
 
 ### Pre-requisites
 
+Docker (https://www.docker.com/get-docker)
+
 A local mysql instance serving an Ensembl sessions database is required - this must be accessible from your docker container. You'll need to set up a local mysql server, then create a user and database as follows.
 
 Create the `ensrw` user and grant required priviledges
