@@ -54,7 +54,7 @@ The website should now be available on `port 80`.
 For debugging you may want to run a container in interactive mode
 
 ```
-docker run -p 80:8080 -t webdocker-website:latest bash
+docker run -p 80:8080 -it webdocker-website:latest bash
 ```
 
 Now you can explore the running container from the command line.
