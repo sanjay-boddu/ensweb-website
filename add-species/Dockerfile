@@ -33,7 +33,7 @@ RUN mkdir website
 WORKDIR website
 
 # checkout code
-RUN git-ensembl --clone ensembl ensembl-compara ensembl-funcgen ensembl-io ensembl-orm ensembl-tools ensembl-variation ensembl-webcode public-plugins
+RUN git-ensembl --clone --branch release/90 ensembl ensembl-compara ensembl-funcgen ensembl-io ensembl-orm ensembl-tools ensembl-variation ensembl-webcode public-plugins
 RUN git-ensembl --checkout --branch experimental/docker public-plugins
 
 # copy the Plugins config
