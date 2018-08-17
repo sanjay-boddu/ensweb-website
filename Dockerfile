@@ -19,6 +19,9 @@ ENV SESSION_PORT=$SESSION_PORT
 ENV SESSION_USER=$SESSION_USER
 ENV SESSION_PASS=$SESSION_PASS
 
+# make sure we've got java
+RUN sudo apt-get update && sudo apt-get install default-jre -y
+
 # add missing symlinks (these should really be created by the parent image)
 RUN mkdir paths/apache
 RUN ln -s /home/linuxbrew/.linuxbrew/opt/httpd22/bin/httpd paths/apache/httpd
