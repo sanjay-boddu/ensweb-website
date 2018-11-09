@@ -1,25 +1,22 @@
 FROM sanjayboddu/ensembl-web-03:v1
 
 
-
 # --build-args
 # some info must be supplied at build time and is then saved to ENV
 # this is not a secure solution but should do to get us started
 
-# server hostname args
-ARG ENSEMBL_SERVERNAME=www.ensembl.org
-ENV ENSEMBL_SERVERNAME=$ENSEMBL_SERVERNAME
 
-# session db args
-ARG SESSION_HOST=your.session.db.host
-ARG SESSION_PORT=3306
-ARG SESSION_USER=ensrw
-ARG SESSION_PASS=ensrw
+ARG ENSEMBL_SERVERNAME=www.ensembl.org \
+    SESSION_HOST=your.session.db.host \
+    SESSION_PORT=3306 \
+    SESSION_USER=ensrw \
+    SESSION_PASS=ensrw
 
-ENV SESSION_HOST=$SESSION_HOST
-ENV SESSION_PORT=$SESSION_PORT
-ENV SESSION_USER=$SESSION_USER
-ENV SESSION_PASS=$SESSION_PASS
+ENV ENSEMBL_SERVERNAME=$ENSEMBL_SERVERNAME \
+    SESSION_HOST=$SESSION_HOST \
+    SESSION_PORT=$SESSION_PORT \
+    SESSION_USER=$SESSION_USER \
+    SESSION_PASS=$SESSION_PASS 
 
 
 
