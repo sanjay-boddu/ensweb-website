@@ -6,11 +6,11 @@ FROM sanjayboddu/ensembl-web-03:v1
 # this is not a secure solution but should do to get us started
 
 
-ARG ENSEMBL_SERVERNAME=www.ensembl.org \
-    SESSION_HOST=your.session.db.host \
-    SESSION_PORT=3306 \
-    SESSION_USER=ensrw \
-    SESSION_PASS=ensrw
+ARG ENSEMBL_SERVERNAME=www.ensembl.org 
+ARG SESSION_HOST=your.session.db.host 
+ARG SESSION_PORT=3306 
+ARG SESSION_USER=ensrw 
+ARG SESSION_PASS=ensrw
 
 ENV ENSEMBL_SERVERNAME=$ENSEMBL_SERVERNAME \
     SESSION_HOST=$SESSION_HOST \
