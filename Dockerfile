@@ -32,6 +32,14 @@ RUN source ${HOME}/.bashrc \
     && git-ensembl --checkout --branch experimental/docker2 public-plugins \
     && cp public-plugins/docker-demo/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 
+
+
+RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed \
+    && cd ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packedi \
+    && wget https://www.ebi.ac.uk/~sboddu/packed_files/mus_musculus.db.packed
+
+WORKDIR $ENSEMBL_WEBCODE_LOCATION
+
 # copy the Plugins config
 #RUN cp public-plugins/docker-demo/conf/httpd.conf ensembl-webcode/conf/
 
@@ -41,8 +49,8 @@ RUN source ${HOME}/.bashrc \
 
 # init and start the server
 RUN ./ensembl-webcode/ctrl_scripts/init
-RUN ./ensembl-webcode/ctrl_scripts/start_server
+#RUN ./ensembl-webcode/ctrl_scripts/start_server
 
-CMD ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND
+#CMD ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND
 
 EXPOSE 8080
