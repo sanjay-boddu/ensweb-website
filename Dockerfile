@@ -30,9 +30,9 @@ RUN source ${HOME}/.bashrc \
 
 
 
-RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed \
-    && cd ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed \
-    && wget https://www.ebi.ac.uk/~sboddu/packed_files/mus_musculus.db.packed 
+RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed 
+
+ADD *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
 
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
