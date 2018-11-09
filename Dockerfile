@@ -1,6 +1,5 @@
 FROM sanjayboddu/ensembl-web-03:v1
 
-
 # --build-args
 # some info must be supplied at build time and is then saved to ENV
 # this is not a secure solution but should do to get us started
@@ -32,22 +31,23 @@ RUN source ${HOME}/.bashrc \
 
 
 RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed \
-    && cd ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packedi \
-    && wget https://www.ebi.ac.uk/~sboddu/packed_files/mus_musculus.db.packed
+    && cd ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed \
+    && wget https://www.ebi.ac.uk/~sboddu/packed_files/mus_musculus.db.packed 
 
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
-# copy the Plugins config
 #RUN cp public-plugins/docker-demo/conf/httpd.conf ensembl-webcode/conf/
 
-# build C deps
-#RUN ensembl-webcode/ctrl_scripts/build_api_c     ## not working - probably not required
-#RUN ensembl-webcode/ctrl_scripts/build_inline_c
+
+USER www
 
 # init and start the server
-RUN ./ensembl-webcode/ctrl_scripts/init
-#RUN ./ensembl-webcode/ctrl_scripts/start_server
+RUN source ${HOME}/.bashrc \
+    && ./ensembl-webcode/ctrl_scripts/init \ 
+    && ./ensembl-webcode/ctrl_scripts/start_server
 
-#CMD ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND
+
+CMD source ${HOME}/.bashrc \
+    && ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND 
 
 EXPOSE 8080
