@@ -27,7 +27,7 @@ RUN source ${HOME}/.bashrc \
     && git-ensembl --clone web \
     && git-ensembl --checkout --branch release/94 web \
     && git-ensembl --checkout --branch experimental/docker2 public-plugins \
-    && cp public-plugins/docker-demo/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
+    && cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 
 
 
