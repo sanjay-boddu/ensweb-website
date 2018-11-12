@@ -31,6 +31,6 @@ RUN source ${HOME}/.bashrc \
     && ./ensembl-webcode/ctrl_scripts/start_server
 
 
-#CMD source ${HOME}/.bashrc \
-#    && ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND 
+CMD source ${HOME}/.bashrc \
+    && ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND 
 EXPOSE 8080
