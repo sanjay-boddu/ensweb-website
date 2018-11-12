@@ -1,23 +1,8 @@
 FROM sanjayboddu/ensembl-web-03:v1
 
-# --build-args
-# some info must be supplied at build time and is then saved to ENV
-# this is not a secure solution but should do to get us started
-
-
 ARG ENSEMBL_SERVERNAME=www.ensembl.org 
-ARG SESSION_HOST=your.session.db.host 
-ARG SESSION_PORT=3306 
-ARG SESSION_USER=ensrw 
-ARG SESSION_PASS=ensrw
 
-ENV ENSEMBL_SERVERNAME=$ENSEMBL_SERVERNAME \
-    SESSION_HOST=$SESSION_HOST \
-    SESSION_PORT=$SESSION_PORT \
-    SESSION_USER=$SESSION_USER \
-    SESSION_PASS=$SESSION_PASS 
-
-
+ENV ENSEMBL_SERVERNAME=$ENSEMBL_SERVERNAME 
 
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
@@ -29,14 +14,13 @@ RUN source ${HOME}/.bashrc \
     && cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 
 
-
 RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed 
 
 ADD *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
 
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
-#RUN cp public-plugins/docker-demo/conf/httpd.conf ensembl-webcode/conf/
+#RUN cp public-plugins/docker/conf/httpd.conf ensembl-webcode/conf/
 
 
 USER www
@@ -47,7 +31,6 @@ RUN source ${HOME}/.bashrc \
     && ./ensembl-webcode/ctrl_scripts/start_server
 
 
-CMD source ${HOME}/.bashrc \
-    && ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND 
-
+#CMD source ${HOME}/.bashrc \
+#    && ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND 
 EXPOSE 8080
