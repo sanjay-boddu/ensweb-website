@@ -1,6 +1,5 @@
 FROM sanjayboddu/ensembl-web-03:v1
 
-
 USER www
 
 ARG ENSEMBL_SERVERNAME=www.ensembl.org 
@@ -16,15 +15,15 @@ RUN source ${HOME}/.bashrc \
     && cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 
 #RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed 
-#ADD *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
+#ADD --chown=www  *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
 
 # init and start the server
 RUN source ${HOME}/.bashrc \
     && ./ensembl-webcode/ctrl_scripts/init \ 
-    && ./ensembl-webcode/ctrl_scripts/start_server
+    && ./ensembl-webcode/ctrl_scripts/build_packed ALL
 
 
 CMD source ${HOME}/.bashrc \
-    && ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND 
+    && ./ensembl-webcode/ctrl_scripts/restart_server -r FOREGROUND 
 
 EXPOSE 8080
