@@ -12,15 +12,11 @@ RUN source ${HOME}/.bashrc \
     && git-ensembl --checkout --branch experimental/docker2 public-plugins \
     && cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 
-
 RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed 
 
 ADD *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
 
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
-
-#RUN cp public-plugins/docker/conf/httpd.conf ensembl-webcode/conf/
-
 
 USER www
 
@@ -32,4 +28,5 @@ RUN source ${HOME}/.bashrc \
 
 CMD source ${HOME}/.bashrc \
     && ./ensembl-webcode/ctrl_scripts/start_server -D FOREGROUND 
+
 EXPOSE 8080
