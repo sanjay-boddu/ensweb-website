@@ -16,8 +16,6 @@ RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed
 
 ADD *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
 
-WORKDIR $ENSEMBL_WEBCODE_LOCATION
-
 USER www
 
 # init and start the server
