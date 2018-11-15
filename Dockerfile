@@ -8,8 +8,7 @@ WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
 # checkout code
 RUN source ${HOME}/.bashrc \
-    && git-ensembl --clone web \
-    && git-ensembl --checkout --branch release/94 web \
+    && git-ensembl --clone --checkout --branch release/94 public-web \
     && git-ensembl --checkout --branch experimental/docker2 public-plugins \
     && cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 
