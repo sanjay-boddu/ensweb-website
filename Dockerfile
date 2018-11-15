@@ -1,5 +1,8 @@
 FROM sanjayboddu/ensembl-web-03:v1
 
+
+USER www
+
 ARG ENSEMBL_SERVERNAME=www.ensembl.org 
 
 ENV ENSEMBL_SERVERNAME=$ENSEMBL_SERVERNAME 
@@ -12,11 +15,8 @@ RUN source ${HOME}/.bashrc \
     && git-ensembl --checkout --branch experimental/docker2 public-plugins \
     && cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
 
-RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed 
-
-ADD *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
-
-USER www
+#RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed 
+#ADD *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
 
 # init and start the server
 RUN source ${HOME}/.bashrc \
