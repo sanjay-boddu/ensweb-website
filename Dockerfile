@@ -1,4 +1,4 @@
-FROM sanjayboddu/ensembl-web-03:v1
+FROM sanjayboddu/ensembl-web-03:v2
 
 USER www
 
